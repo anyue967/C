@@ -1,8 +1,11 @@
 ## 目录
-* [指针](#4.指针即地址)
-* [typedef](#5.typedef)
-* [数组](#6.数组)
-* [结构体](#7.结构体)
+* [指针](#指针)
+* [typedef](#typedef)
+* [数组](#数组)
+* [结构体](#结构体)
+* [动态内存分配](#)
+* [作用域](#作用域)
+* [链表](#链表)
 
 #### 1. 从逻辑上删除C代码,标准头文件结构： 
    
@@ -34,7 +37,7 @@
         printf( "Original input : %s\n", input );// 执行格式化输出：Original input : Hi friends!      
         scanf( "%d", &columns[num] );// 格式化化输入，必须有“&”符号，数组参数前可以不需要
  	
-#### 4. 指针即地址：  <div id="指针"></div>
+#### 4. 指针即地址：<div id="指针"></div>
  **指针变量**就是**一个其值为另外一个（一些）**内存地址的变量**，就是存放地址的变量，**未初始化的指针很危险！！！**   
 
 *左值之所以叫左值：是因为出现在赋值号左边的**不是变量**，而是值，是表达式计算的结果，是特殊的值，所以叫左值*  
@@ -63,7 +66,7 @@
 
 指针（地址）指向内存地址		*（取值）访问地址里的内容   
 
-#### 5. typedef:为各种 数据类型 定义新名字:
+#### 5. typedef:为各种 数据类型 定义新名字:<div id="typedef"></div>
 	
     #define d_ptr_to_char char *;
     typedef char *d_ptr_to_char;   	
@@ -75,13 +78,13 @@ const：声明常量，`int const a;` 或者 `const int a;`
     int * const ptr;   // 一个指向整型的*常量指针*，此时指针是常量，无法修改，但可以修改它所指向的整型的值  
     int const * const ptr;	// *都不能修改*  
 
-#### 6. 数组：  
+#### 6. 数组：<div id="数组"></div>
 
     int vector[10], *vp = vector;	// 合法指针声明，vp是一个指向int型的指针，并把其初始化指向vector数组的第1个元素  
     int matrix[3][10], *mp = matrix;	// 不合法，mp是一个指向int型的指针，但mp是指向整型数组的指针  
     int (*p)[10];	// 合法声明  
 
-#### 7. 结构体：  
+#### 7. 结构体：<div id="结构体"></div>  
 + 和本地变量一样，在函数内部声明的结构类型只能在函数内部使用；所以通常在函数外部声明结构类型，可以被多个函数使用；  
 
 + . 的左边是一个结构，否则无意义  
@@ -161,7 +164,7 @@ const：声明常量，`int const a;` 或者 `const int a;`
              QueueAddTail(IpIntQueueHead, intType);
          }
 		
-#### 8. 动态内存分配：  
+#### 8. 动态内存分配： <div id="动态内存分配"></div>
 	malloc()：动态内存分配，函数原型：void *malloc( size_t size);    
 		1.参数就是需要分配内存字节数，若内存有满足这个需要，malloc会返回一个指向这块内存起始位置的指针；    
 		2.若如果无法向malloc提供内存，就返回NULL指针，这就需要检查malloc返回值是很重要的   
@@ -190,7 +193,7 @@ const：声明常量，`int const a;` 或者 `const int a;`
 
 
 
-#### 9. 链表：  
+#### 9. 链表：  <div id="链表"></div>
 + 链表包含一个"头指针"，指向下一个元素，称作"结点"，包含*用户数据 与 下一个结点的地址*   
 
         typedef struct NODE {
@@ -198,7 +201,7 @@ const：声明常量，`int const a;` 或者 `const int a;`
     		int value;
     	} Node; // typedef struct NODE Node	即 "struct NODE" 等价于 "Node"，可以用Node代替结构体类型名  	
 		
-#### 10. 关于作用域、链接属性、存储类型：     
+#### 10. 关于作用域、链接属性、存储类型： <div id="作用域"></div>    
 [链接属性]()：标识符的作用域与它的链接属性有关，'external、internal、none'，非代码快内部或者函数内部缺省状态下具有external属性，static用于修改标识符的链接属性由external-->internal    
 [存储类型]():凡在任何代码快之外声明的变量总是存储于静态内存中，即不属于堆栈的内存，称作静态变量(static)，存在于整个程序执行期间，始终保持原先的值，除非给它另赋值  
 [总结]()：external-->称为全局实体，不受访问限制
